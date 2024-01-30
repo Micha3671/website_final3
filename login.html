@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Finstergram</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" placeholder="Enter your email">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password">
+
+    <button onclick="handleLogin()">Login</button>
+
+    <div id="result"></div>
+
+    <script>
+        function handleLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const loginData = {
+                email: email,
+                password: password
+            };
+
+            document.getElementById('result').innerText = JSON.stringify(loginData);
+        }
+    </script>
+</body>
+</html>

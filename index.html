@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="variables.css">
+  <style>
+    #imageGrid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .image-container {
+      margin: 10px;
+    }
+
+    .image-container img {
+      width: 100px; /* Ändere dies auf die gewünschte Bildgröße */
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+<div class="navbar">
+  <button>Finstergram</button>
+  <a href="signup.html" id="registerLink">Registrieren</a>
+  <a href="login.html" id="loginLink">Anmelden</a>
+  <script src="script.js" defer></script>
+</div>
+<script>
+  function goToLogin() {
+      window.location.href = "login.html";
+  }
+
+  function goToSignup() {
+      window.location.href = "signup.html";
+  }
+</script>
+
+</body>
+</html>
+<div class="flexbox">
+  <div class="profil"> 
+      <div class="profil-bild">
+          <img class="profil-bild-img" src="./jfif/cat2.jfif">
+      </div>
+      <div class="profil-kram">
+          <div class="profil-info">
+              <label> Finstergram</label>
+              <button> Folgen </button>
+              <button> Nachricht senden </button>
+              <button> ... </button>
+          </div>
+          <div class="profil-stats">
+              <label class="stat"> 3 Beiträge </label>
+              <label class="stat"> 3 Follower </label>
+              <label class="stat"> 20 gefolgt </label>
+          </div>
+          <div class="profil-bio">
+              <h5>Finstergram</h5>
+              <h6>Bildung</h6>
+              <h6>in 12 Monaten Finsterlos :)</h6>
+              <h6>100% online</h6>
+              <h6>Kursstart: ASAP</h6>
+              <h6>Taschenlampe inklusive!</h6>
+              <h6>Adresse xyz</h6>
+          </div>
+          <div class="links">
+            <button> Beiträge</button>
+            <button> Reels </button>
+            <button> Markiert </button>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <script>
+    var jsonData = {
+      images: [
+        './jfif/cat0.jfif',
+        './jfif/cat0.jfif',
+        './jfif/cat0.jfif',
+        './jfif/cat0.jfif',
+        './jfif/cat1.jfif',
+        './jfif/cat1.jfif',
+        './jfif/cat1.jfif',
+        './jfif/cat1.jfif',
+        './jfif/cat2.jfif',
+        './jfif/cat2.jfif',
+        './jfif/cat2.jfif',
+        './jfif/cat2.jfif',
+      ]
+    };
+
+    function simulateDatabaseQuery(callback) {
+      // Simuliere eine Datenbankabfrage mit einem Timeout von 2 Sekunden
+      setTimeout(callback, 2000);
+    }
+
+    function loadImages() {
+      var loadingDiv = document.getElementById('loading');
+      var imageGrid = document.getElementById('imageGrid');
+
+      // Zeige den Ladebildschirm an
+      loadingDiv.style.display = 'block';
+
+      // Simuliere die Datenbankabfrage
+      simulateDatabaseQuery(function () {
+        // Verstecke den Ladebildschirm nach der Datenbankabfrage
+        loadingDiv.style.display = 'none';
+
+        // Iteriere durch die Bild-URLs im JSON-Objekt
+        jsonData.images.forEach(function (imageUrl) {
+          var imageContainer = document.createElement('div');
+          imageContainer.className = 'image-container';
+
+          var imageElement = document.createElement('img');
+          imageElement.src = imageUrl;
+
+          imageContainer.appendChild(imageElement);
+          imageGrid.appendChild(imageContainer);
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadImages);
+  </script>
+</head>
+<body>
+  <!-- Rest des HTML-Codes hier -->
+  <div id="loading">Lade...</div>
+  <div id="imageGrid"></div>
+</body>
+</html>
